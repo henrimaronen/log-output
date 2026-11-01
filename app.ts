@@ -1,0 +1,16 @@
+import { randomUUID, randomBytes } from "node:crypto";
+import type { RequestListener } from "node:http";
+
+const instanceId: string = randomUUID();
+
+export const app: RequestListener = (_req, res): void => {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({ instanceId }));
+};
+
+const randomString: string = randomBytes(12).toString("ascii");
+
+export const printTimestamps = (intervalMs: number = 5000): NodeJS.Timeout =>
+  setInterval((): void => {
+    console.log(`${new Date().toISOString()}: ${randomString}`);
+  }, intervalMs);
