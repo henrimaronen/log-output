@@ -2,4 +2,6 @@
 
 ## Exercises
 
-### Chapter 2
+### Chapter 1
+
+- 1.1
