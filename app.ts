@@ -1,6 +1,8 @@
 import { randomUUID, randomBytes } from "node:crypto";
 import type { RequestListener } from "node:http";
 
+const LOG_OUTPUT_INTERVAL = 5000;
+
 const instanceId: string = randomUUID();
 
 export const app: RequestListener = (_req, res): void => {
@@ -10,7 +12,13 @@ export const app: RequestListener = (_req, res): void => {
 
 const randomString: string = randomBytes(12).toString("ascii");
 
-export const printTimestamps = (intervalMs: number = 5000): NodeJS.Timeout =>
+export const logs: string[] = [];
+
+export const printTimestamps = (
+  intervalMs: number = LOG_OUTPUT_INTERVAL,
+): NodeJS.Timeout =>
   setInterval((): void => {
-    console.log(`${new Date().toISOString()}: ${randomString}`);
+    const line: string = `${new Date().toISOString()}: ${randomString}`;
+    console.log(line);
+    logs.push(line);
   }, intervalMs);
