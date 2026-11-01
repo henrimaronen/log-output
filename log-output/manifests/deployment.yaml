@@ -1,9 +1,9 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: Deployment # type of resource
 metadata:
-  name: log-output
+  name: log-output # name of the resource
 spec:
-  replicas: 1
+  replicas: 1 # number of replicas to create
   selector:
     matchLabels:
       app: log-output
