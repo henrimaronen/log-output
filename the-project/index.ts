@@ -1,12 +1,13 @@
-import { createServer, type Server } from "node:http";
+import express, { type Express } from "express";
 
 const PORT: number = Number(process.env.PORT ?? 8889);
 
-const server: Server = createServer((_req, res): void => {
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.end("OK");
+const app: Express = express();
+
+app.get("/", (_req, res): void => {
+  res.json("OK");
 });
 
-server.listen(PORT, (): void => {
+app.listen(PORT, (): void => {
   console.log(`Server started in port ${PORT}`);
 });
