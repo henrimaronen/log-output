@@ -25,3 +25,20 @@ node:30080 (NodePort, the-project-svc, port 1234)
 Pod container:9000 (the-project)
 ```
 
+## Exercices 1.7
+
+```bash
+kubectl delete -f log-output/manifests/
+```
+
+```bash
+kubectl apply -f the-project/manifests/
+```
+
+```bash
+kubectl describe ingress the-project-ingress
+```
+
+```bash
+curl -s localhost:8081 | jq .
+```
