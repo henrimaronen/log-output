@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: log-output
-          image: henronen/log-output:1.0
+          image: henronen/log-output:1.5
           imagePullPolicy: IfNotPresent
           env:
             - name: PORT
