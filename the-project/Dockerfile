@@ -10,6 +10,6 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev
 COPY --from=build /app/dist ./dist
-ENV PORT=8889
-EXPOSE 8889
+ENV PORT=9000
+EXPOSE 9000
 CMD ["node", "dist/index.js"]

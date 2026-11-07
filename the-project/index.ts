@@ -1,6 +1,6 @@
 import express, { type Express } from "express";
 
-const PORT: number = Number(process.env.PORT ?? 8889);
+const PORT: number = Number(process.env.PORT ?? 9000);
 
 const app: Express = express();
 
