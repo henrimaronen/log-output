@@ -75,3 +75,5 @@ Pod container:8888 (log-output)
 `kubectl get pv shared-pv `
 `kubectl apply -f volumes/persistentvolumeclaim.yaml`
 `kubectl get pvc shared-claim`
+`docker build -t henronen/ping-pong:1.1 .`
+`docker push henronen/ping-pong:1.1`
