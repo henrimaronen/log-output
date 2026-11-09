@@ -62,8 +62,8 @@ Pod container:8888 (log-output)
 ```
 ## 1.10
 
-`docker build -t henronen/log-output:2.1 log-output`
-`docker push henronen/log-output:2.1`
-`kubectl logs deploy/log-output -c log-writer -f`
-`kubectl logs deploy/log-output -c log-reader -f`
-`curl localhost:8081/`
+- `docker build -t henronen/log-output:2.1 log-output`
+- `docker push henronen/log-output:2.1`
+- `kubectl logs deploy/log-output -c log-writer -f`
+- `kubectl logs deploy/log-output -c log-reader -f`
+- `curl localhost:8081/`
