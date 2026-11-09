@@ -15,16 +15,16 @@ spec:
       volumes:
         - name: shared-logs
           persistentVolumeClaim:
-            claimName: image-claim
+            claimName: shared-claim
       containers:
         - name: log-writer
-          image: henronen/log-output:2.0
+          image: henronen/log-output:2.1
           args: ["dist/writer.js"]
           volumeMounts:
             - name: shared-logs
               mountPath: /usr/src/app/files
         - name: log-reader
-          image: henronen/log-output:2.0
+          image: henronen/log-output:2.1
           args: ["dist/reader.js"]
           env:
             - name: PORT
