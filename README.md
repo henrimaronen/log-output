@@ -14,3 +14,4 @@
 - [1.8](https://github.com/henrimaronen/log-output/tree/1.8/the-project)
 - [1.9](https://github.com/henrimaronen/log-output/tree/1.9/log-output)
 - [1.10](https://github.com/henrimaronen/log-output/tree/1.10/log-output)
+- [1.11](https://github.com/henrimaronen/log-output/tree/1.11/log-output)
