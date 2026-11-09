@@ -2,11 +2,12 @@
   "name": "Log Output",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node --env-file-if-exists=.env dist/index.js",
-    "dev": "node --watch --env-file-if-exists=.env index.ts",
+    "start:writer": "node --env-file-if-exists=.env dist/writer.js",
+    "start:reader": "node --env-file-if-exists=.env dist/reader.js",
+    "dev:writer": "node --watch --env-file-if-exists=.env writer.ts",
+    "dev:reader": "node --watch --env-file-if-exists=.env reader.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

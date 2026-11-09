@@ -12,4 +12,4 @@ RUN npm ci --omit=dev
 COPY --from=build /app/dist ./dist
 ENV PORT=8888
 EXPOSE 8888
-CMD ["node", "dist/index.js"]
+ENTRYPOINT ["node"]
