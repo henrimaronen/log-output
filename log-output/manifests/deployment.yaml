@@ -14,8 +14,8 @@ spec:
     spec:
       volumes:
         - name: shared-logs
-          emptyDir:
-            sizeLimit: 10Mi
+          persistentVolumeClaim:
+            claimName: image-claim
       containers:
         - name: log-writer
           image: henronen/log-output:2.0
