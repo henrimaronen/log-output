@@ -67,3 +67,11 @@ Pod container:8888 (log-output)
 - `kubectl logs deploy/log-output -c log-writer -f`
 - `kubectl logs deploy/log-output -c log-reader -f`
 - `curl localhost:8081/`
+
+
+## 1.11
+
+`kubectl apply -f volumes/`
+`kubectl get pv shared-pv `
+`kubectl apply -f volumes/persistentvolumeclaim.yaml`
+`kubectl get pvc shared-claim`
