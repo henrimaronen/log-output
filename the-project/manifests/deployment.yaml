@@ -12,12 +12,22 @@ spec:
       labels:
         app: the-project
     spec:
+      volumes:
+        - name: shared-files
+          persistentVolumeClaim:
+            claimName: shared-claim
       containers:
         - name: the-project
-          image: henronen/the-project:1.6
+          image: henronen/the-project:1.7
           imagePullPolicy: IfNotPresent
           env:
             - name: PORT
               value: "9000"
+            - name: IMAGE_DIR
+              value: /app/files
           ports:
             - containerPort: 9000
+          volumeMounts:
+            - name: shared-files
+              mountPath: /app/files
+              subPath: the-project

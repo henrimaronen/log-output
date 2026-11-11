@@ -56,5 +56,5 @@ curl -s localhost:8080/picture | jq .
 ```
 
 ```bash
-curl -s localhost:8080/picture | jq .
+docker exec k3d-k3s-default-agent-0 ls /tmp/kube/the-project
 ```
