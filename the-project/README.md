@@ -42,3 +42,19 @@ kubectl describe ingress the-project-ingress
 ```bash
 curl -s localhost:8081 | jq .
 ```
+
+## Exercise 1.12
+
+`docker compose up -d`
+
+```bash
+curl -s localhost:8080 | jq .
+```
+
+```bash
+curl -s localhost:8080/picture | jq .
+```
+
+```bash
+curl -s localhost:8080/picture | jq .
+```
