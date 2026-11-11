@@ -1,0 +1,5 @@
+services:
+  the-project:
+    build: .
+    ports:
+      - "8080:9000"
