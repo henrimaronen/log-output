@@ -17,6 +17,10 @@ app.get("/pingpong", (_req, res): void => {
   writeFileSync(COUNT_FILE, String(pongCount));
 });
 
+app.get("/pings", (_req, res): void => {
+  res.json({ pings: pongCount });
+})
+
 function readCount(): number {
   try {
     return Number(readFileSync(COUNT_FILE, "utf8")) || 0;

@@ -29,6 +29,8 @@ spec:
           env:
             - name: PORT
               value: "8888"
+            - name: PING_PONG_URL
+              value: "http://ping-pong-svc:2345"
           ports:
             - containerPort: 8888
           readinessProbe:
