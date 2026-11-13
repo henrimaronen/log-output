@@ -18,4 +18,7 @@
 - [1.12](https://github.com/henrimaronen/log-output/tree/1.12/the-project)
 - [1.13](https://github.com/henrimaronen/log-output/tree/1.13/the-project)
 - [1.13](https://github.com/henrimaronen/log-output/tree/1.13/the-project)
+
+### Chapter 3
+
 - [2.1](https://github.com/henrimaronen/log-output/tree/2.1)
