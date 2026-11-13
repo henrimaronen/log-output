@@ -2,8 +2,6 @@ import { access, readFile } from "node:fs/promises";
 import express, { type Express } from "express";
 
 const LOG_FILE: string = process.env.LOG_FILE ?? "/usr/src/app/files/log.txt";
-const PING_PONG_FILE: string =
-  process.env.PING_PONG_FILE ?? "/usr/src/app/files/pingpong.txt";
 const PORT: number = Number(process.env.PORT ?? 8888);
 const PING_PONG_URL: string = process.env.PING_PONG_URL ?? "http://ping-pong-svc:2345";
 

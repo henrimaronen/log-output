@@ -12,16 +12,9 @@ spec:
       labels:
         app: ping-pong
     spec:
-      volumes:
-        - name: shared-files
-          persistentVolumeClaim:
-            claimName: shared-claim
       containers:
         - name: ping-pong
           image: henronen/ping-pong:1.1
-          volumeMounts:
-            - name: shared-files
-              mountPath: /usr/src/app/files
           imagePullPolicy: IfNotPresent
           env:
             - name: PORT
