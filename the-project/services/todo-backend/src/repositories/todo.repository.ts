@@ -8,6 +8,5 @@ export const create = (todo: Todo): Todo => {
 };
 
 export const fetchAll = (): Todo[] => {
-  // Fetch todos from todo-app
   return todos;
 };
