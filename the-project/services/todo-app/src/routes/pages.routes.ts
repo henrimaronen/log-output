@@ -7,7 +7,7 @@ import { renderPage } from "../views/page.ts";
 
 export const pagesRouter: Router = Router();
 
-pagesRouter.get("/", (_req, res): void => {
+pagesRouter.get("/health", (_req, res): void => {
   res.json({
     pod: hostname(),
     uptimeSeconds: Math.floor(process.uptime()),
@@ -15,7 +15,7 @@ pagesRouter.get("/", (_req, res): void => {
   });
 });
 
-pagesRouter.get("/picture", async (_req, res): Promise<void> => {
+pagesRouter.get("/", async (_req, res): Promise<void> => {
   try {
     const [image, todos]: [Buffer, Todo[]] = await Promise.all([
       fetchImage(),
