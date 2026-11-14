@@ -1,4 +1,6 @@
-export const renderPage = (src: string, todos: string[]): string => `<!DOCTYPE html>
+import type { Todo } from "../types/todo.ts";
+
+export const renderPage = (src: string, todos: Todo[]): string => `<!DOCTYPE html>
 <html>
   <head>
     <title>The Project</title>
@@ -46,7 +48,7 @@ export const renderPage = (src: string, todos: string[]): string => `<!DOCTYPE h
   <div style="width: 600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
   <h3>Todos</h3>
       <ul style="width: 100%;">
-        ${todos.map((todo: string): string => `<li>${todo}</li>`).join("")}
+        ${todos.map((todo: Todo): string => `<li>${todo.title}</li>`).join("")}
       </ul>
     </div>
   </body>
