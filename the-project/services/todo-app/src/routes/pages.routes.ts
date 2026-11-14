@@ -17,15 +17,20 @@ pagesRouter.get("/health", (_req, res): void => {
 
 pagesRouter.get("/", async (_req, res): Promise<void> => {
   try {
-    const [image, todos]: [Buffer, Todo[]] = await Promise.all([
-      fetchImage(),
-      getTodos(),
-    ]);
-    const src: string = `data:image/jpeg;base64,${image.toString("base64")}`;
-    res.send(renderPage(src, todos));
+    const todos: Todo[] = await getTodos();
+    res.send(renderPage(todos));
   } catch (error) {
-    console.error("Failed to serve /picture:", error);
+    console.error("Failed to serve /:", error);
     res.status(502).send("Could not load page");
+  }
+});
+
+pagesRouter.get("/image", async (_req, res): Promise<void> => {
+  try {
+    res.type("image/jpeg").send(await fetchImage());
+  } catch (error) {
+    console.error("Failed to serve /image:", error);
+    res.sendStatus(502);
   }
 });
 

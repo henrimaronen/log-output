@@ -22,18 +22,26 @@ export const fetchImage = async (url: string = IMAGE_URL): Promise<Buffer> => {
     return readFile(IMAGE_PATH);
   }
 
-  const response: Response = await fetch(url, {
-    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
-  });
+  let data: Buffer;
+  try {
+    const response: Response = await fetch(url, {
+      signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+    });
 
-  if (!response.ok) {
-    console.error(
-      `Failed to fetch image from ${url}: ${response.status} ${response.statusText}`,
-    );
-    throw new Error(`Image fetch failed with status ${response.status}`);
+    if (!response.ok) {
+      console.error(
+        `Failed to fetch image from ${url}: ${response.status} ${response.statusText}`,
+      );
+      throw new Error(`Image fetch failed with status ${response.status}`);
+    }
+
+    data = Buffer.from(await response.arrayBuffer());
+  } catch (error) {
+    if (cachedAt === undefined) throw error;
+    console.error(`Serving stale image, fetch from ${url} failed:`, error);
+    return readFile(IMAGE_PATH);
   }
 
-  const data: Buffer = Buffer.from(await response.arrayBuffer());
   await mkdir(IMAGE_DIR, { recursive: true });
   await writeFile(IMAGE_PATH, data);
   return data;

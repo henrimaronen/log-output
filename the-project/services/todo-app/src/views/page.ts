@@ -1,6 +1,6 @@
 import type { Todo } from "../types/todo.ts";
 
-export const renderPage = (src: string, todos: Todo[]): string => `<!DOCTYPE html>
+export const renderPage = (todos: Todo[]): string => `<!DOCTYPE html>
 <html>
   <head>
     <title>The Project</title>
@@ -41,7 +41,7 @@ export const renderPage = (src: string, todos: Todo[]): string => `<!DOCTYPE htm
   <body>
   <div style="width: 600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
     <h1>The Project</h1>
-      <img src="${src}" alt="Random picture" width="600" style="max-width: 600px; max-height: 600px;" />
+      <img src="/image" alt="Random picture" width="600" style="max-width: 600px; max-height: 600px;" />
       <input placeholder="Enter a new todo (max 140 characters)" type="text" />
       <button>Send</button>
     </div>
