@@ -6,6 +6,7 @@ const IMAGE_PATH: string = path.join(IMAGE_DIR, "image.jpg");
 
 const IMAGE_URL: string = "https://picsum.photos/1200";
 const TTL_MS: number = 10 * 60 * 1000;
+const FETCH_TIMEOUT_MS: number = 5_000; // 5 seconds
 
 const getCachedAt = async (): Promise<number | undefined> => {
   try {
@@ -21,7 +22,10 @@ export const fetchImage = async (url: string = IMAGE_URL): Promise<Buffer> => {
     return readFile(IMAGE_PATH);
   }
 
-  const response: Response = await fetch(url);
+  const response: Response = await fetch(url, {
+    signal: AbortSignal.timeout(FETCH_TIMEOUT_MS),
+  });
+
   if (!response.ok) {
     console.error(
       `Failed to fetch image from ${url}: ${response.status} ${response.statusText}`,
