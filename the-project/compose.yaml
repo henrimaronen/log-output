@@ -1,9 +1,9 @@
 services:
   the-project:
-    build: .
+    build: ./services/todo-app
     ports:
       - "8080:9000"
     environment:
       - IMAGE_DIR=/app/files
     volumes:
-      - ./files:/app/files
+      - ./services/todo-app/files:/app/files

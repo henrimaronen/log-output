@@ -2,7 +2,7 @@ FROM node:24-alpine AS build
 WORKDIR /app
 COPY package*.json tsconfig.json ./
 RUN npm ci
-COPY *.ts ./
+COPY src ./src
 RUN npm run build
 
 FROM node:24-alpine
