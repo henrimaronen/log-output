@@ -1,6 +1,9 @@
 import type { Todo } from "../types/todo.ts";
 
-export const renderPage = (todos: Todo[]): string => `<!DOCTYPE html>
+const TODOS_FORM_ACTION: string =
+  process.env.TODOS_FORM_ACTION ?? "http://localhost:3000/todos";
+
+export const renderPage = (todos: Todo[]): string => /* html */ `<!DOCTYPE html>
 <html>
   <head>
     <title>The Project</title>
@@ -42,8 +45,10 @@ export const renderPage = (todos: Todo[]): string => `<!DOCTYPE html>
   <div style="width: 600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
     <h1>The Project</h1>
       <img src="/image" alt="Random picture" width="600" style="max-width: 600px; max-height: 600px;" />
-      <input placeholder="Enter a new todo (max 140 characters)" type="text" />
-      <button>Send</button>
+      <form action="${TODOS_FORM_ACTION}" method="post" style="width: 100%; display: flex; gap: 10px;">
+        <input name="title" placeholder="Enter a new todo (max 140 characters)" type="text" />
+        <button type="submit">Send</button>
+      </form>
     </div>
   <div style="width: 600px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
   <h3>Todos</h3>

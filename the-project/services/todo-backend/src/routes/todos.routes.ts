@@ -2,11 +2,13 @@ import { Router } from "express";
 import * as todoRepository from "../repositories/todo.repository.ts";
 import type { Todo } from "../types/todo.ts";
 
+const TODO_APP_URL: string = process.env.TODO_APP_URL ?? "http://localhost:9000";
+
 export const todosRouter: Router = Router();
 
 todosRouter.post("/todos", (req, res): void => {
-  const todo: Todo = todoRepository.create(req.body);
-  res.status(201).json(todo);
+  todoRepository.create(req.body);
+  res.redirect(TODO_APP_URL);
 });
 
 todosRouter.get("/todos", (_req, res): void => {
