@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-backend-svc
+spec:
+  type: ClusterIP
+  selector:
+    app: todo-backend # This is the app as declared in the deployment.
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3000
+      targetPort: 3000 # Port that the service will target to, so our todo-backend container
