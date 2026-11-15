@@ -18,7 +18,7 @@ spec:
             claimName: shared-claim
       containers:
         - name: the-project
-          image: henronen/the-project:1.
+          image: henronen/the-project:1.8
           imagePullPolicy: IfNotPresent
           env:
             - name: PORT
