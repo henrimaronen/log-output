@@ -22,3 +22,4 @@
 ### Chapter 3
 
 - [2.1](https://github.com/henrimaronen/log-output/tree/2.1)
+- [2.2](https://github.com/henrimaronen/the-project/tree/2.2)
