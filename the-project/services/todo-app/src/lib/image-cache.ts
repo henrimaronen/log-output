@@ -1,4 +1,4 @@
-import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
+import { mkdir, readFile, stat, utimes, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const IMAGE_DIR: string = process.env.IMAGE_DIR ?? "./files";
@@ -39,6 +39,8 @@ export const fetchImage = async (url: string = IMAGE_URL): Promise<Buffer> => {
   } catch (error) {
     if (cachedAt === undefined) throw error;
     console.error(`Serving stale image, fetch from ${url} failed:`, error);
+    const now: Date = new Date();
+    await utimes(IMAGE_PATH, now, now);
     return readFile(IMAGE_PATH);
   }
 
