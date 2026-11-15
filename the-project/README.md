@@ -9,8 +9,6 @@
 - `kubectl logs -l app=the-project`
 - `kubectl port-forward deploy/the-project 3000:9000`
 
-
-
 ## Exercise 1.6
 
 - `k3d cluster create --port 9000:30080@agent:0 -p 8081:80@loadbalancer --agents 2`
@@ -58,3 +56,44 @@ curl -s localhost:8080/picture | jq .
 ```bash
 docker exec k3d-k3s-default-agent-0 ls /tmp/kube/the-project
 ```
+
+## Exercise 2.2
+
+Local (`npm run dev` in both services, todo-app on 9000, todo-backend on 3000)
+
+```bash
+curl -i -X POST localhost:3000/todos -d "title=Learn Kubernetes"
+```
+
+```bash
+curl -s localhost:3000/todos | jq .
+```
+
+Build and push
+
+```bash
+docker build -t henronen/todo-backend:1.1 the-project/services/todo-backend
+docker push henronen/todo-backend:1.1
+docker build -t henronen/the-project:1.8 the-project/services/todo-app
+docker push henronen/the-project:1.8
+```
+
+Deploy
+
+```bash
+kubectl delete ingress log-output-ingress
+kubectl apply -f the-project/manifests/ \
+  -f the-project/services/todo-app/manifests/ \
+  -f the-project/services/todo-backend/manifests/
+kubectl rollout status deploy/the-project
+kubectl rollout status deploy/todo-backend
+```
+
+Verify
+
+```bash
+kubectl get pods,svc,ingress
+curl -i -X POST localhost:8081/todos -d "title=From ingress"
+curl -s localhost:8081/todos | jq .
+```
+
