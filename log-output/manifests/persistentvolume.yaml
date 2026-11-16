@@ -10,7 +10,7 @@ spec:
   accessModes:
   - ReadWriteOnce
   local:
-    path: /tmp/kube
+    path: /tmp/kube/log-output 
   nodeAffinity: ## This is only required for local, it defines which nodes can access it
     required:
       nodeSelectorTerms:
