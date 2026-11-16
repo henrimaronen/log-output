@@ -19,7 +19,7 @@ spec:
             claimName: the-project-claim
       containers:
         - name: the-project
-          image: henronen/the-project:1.8
+          image: henronen/the-project:1.9
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
