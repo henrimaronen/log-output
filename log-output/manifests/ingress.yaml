@@ -2,9 +2,12 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: log-output-ingress
+  namespace: exercises
 spec:
+  ingressClassName: traefik
   rules:
-    - http:
+    - host: log-output.localhost
+      http:
         paths:
           - path: /pingpong
             pathType: Prefix
