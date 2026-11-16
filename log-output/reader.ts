@@ -3,7 +3,8 @@ import express, { type Express } from "express";
 
 const LOG_FILE: string = process.env.LOG_FILE ?? "/usr/src/app/files/log.txt";
 const PORT: number = Number(process.env.PORT ?? 8888);
-const PING_PONG_URL: string = process.env.PING_PONG_URL ?? "http://ping-pong-svc:2345";
+const PING_PONG_URL: string =
+  process.env.PING_PONG_URL ?? "http://ping-pong-svc:2345";
 
 const app: Express = express();
 
@@ -12,7 +13,12 @@ app.get("/", async (_req, res): Promise<void> => {
     const content: string = await readFile(LOG_FILE, "utf8");
     const lastLine: string = content.trim().split("\n").at(-1) ?? "";
     const pings: number = await fetchPings();
-    res.type("text/plain").send(`${lastLine}.\nPing / Pongs: ${pings}`);
+    const message: string = await readFile(
+      "/usr/src/app/config/information.txt",
+      "utf8",
+    );
+    const envMessage: string = process.env.MESSAGE ?? "";
+    res.type("text/plain").send(`${lastLine}.\nfile content: ${message.trim()}\nenv variable: MESSAGE=${envMessage}\nPing / Pongs: ${pings}`);
   } catch (err: unknown) {
     console.error(`Failed to read ${LOG_FILE}:`, err);
     res.status(500).send("Log file not available yet");
