@@ -105,10 +105,10 @@ Create new namespace
 
 Delete resources from default namespace
 
-`kubectl delete deployment the-project todo-backend -n default`
-`kubectl delete service the-project-svc todo-backend-svc -n default`
-`kubectl delete ingress the-project-ingress -n default`
+- `kubectl delete deployment the-project todo-backend -n default`
+- `kubectl delete service the-project-svc todo-backend-svc -n default`
+- `kubectl delete ingress the-project-ingress -n default`
 
 Verify that default namespace is empty
 
-`kubectl get pvc -n default` 
+- `kubectl get pvc -n default` 
