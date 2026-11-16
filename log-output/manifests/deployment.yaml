@@ -19,13 +19,13 @@ spec:
             claimName: log-output-claim
       containers:
         - name: log-writer
-          image: henronen/log-output:2.1
+          image: henronen/log-output:2.2
           args: ["dist/writer.js"]
           volumeMounts:
             - name: shared-logs
               mountPath: /usr/src/app/files
         - name: log-reader
-          image: henronen/log-output:2.1
+          image: henronen/log-output:2.2
           args: ["dist/reader.js"]
           env:
             - name: PORT
