@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: log-output
+  namespace: exercises
 spec:
   replicas: 1
   selector:
@@ -15,7 +16,7 @@ spec:
       volumes:
         - name: shared-logs
           persistentVolumeClaim:
-            claimName: shared-claim
+            claimName: log-output-claim
       containers:
         - name: log-writer
           image: henronen/log-output:2.1
