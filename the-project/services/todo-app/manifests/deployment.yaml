@@ -16,7 +16,7 @@ spec:
       volumes:
         - name: shared-files
           persistentVolumeClaim:
-            claimName: shared-claim
+            claimName: the-project-claim
       containers:
         - name: the-project
           image: henronen/the-project:1.8
