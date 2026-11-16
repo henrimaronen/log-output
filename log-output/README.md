@@ -1,5 +1,11 @@
 # Log output
 
+## General commands
+
+- `docker build -t henronen/log-output:<version number>`
+- `docker build -t henronen/log-output:<version number>`
+
+
 ## 1.1
 
 Create a cluster
