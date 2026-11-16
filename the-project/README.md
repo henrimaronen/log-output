@@ -97,3 +97,18 @@ curl -i -X POST localhost:8081/todos -d "title=From ingress"
 curl -s localhost:8081/todos | jq .
 ```
 
+## Exercise 2.4
+
+Create new namespace
+
+- `kubectl create ns project`
+
+Delete resources from default namespace
+
+`kubectl delete deployment the-project todo-backend -n default`
+`kubectl delete service the-project-svc todo-backend-svc -n default`
+`kubectl delete ingress the-project-ingress -n default`
+
+Verify that default namespace is empty
+
+`kubectl get pvc -n default` 
