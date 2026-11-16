@@ -21,15 +21,9 @@ spec:
         - name: the-project
           image: henronen/the-project:1.8
           imagePullPolicy: IfNotPresent
-          env:
-            - name: PORT
-              value: "9000"
-            - name: IMAGE_DIR
-              value: /app/files
-            - name: TODO_BACKEND_URL
-              value: http://todo-backend-svc:3000 # Todo backend application service address. 
-            - name: TODOS_FORM_ACTION
-              value: /todos
+          envFrom:
+            - configMapRef:
+                name: the-project-config
           ports:
             - containerPort: 9000
           volumeMounts:

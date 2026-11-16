@@ -2,11 +2,11 @@ import { mkdir, readFile, stat, utimes, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 const IMAGE_DIR: string = process.env.IMAGE_DIR ?? "./files";
-const IMAGE_PATH: string = path.join(IMAGE_DIR, "image.jpg");
+const IMAGE_PATH: string = path.join(IMAGE_DIR, process.env.IMAGE_NAME ?? "image.jpg");
 
-const IMAGE_URL: string = "https://picsum.photos/1200";
-const TTL_MS: number = 10 * 60 * 1000;
-const FETCH_TIMEOUT_MS: number = 5_000; // 5 seconds
+const IMAGE_URL: string = process.env.IMAGE_URL ?? "https://picsum.photos/1200";
+const TTL_MS: number = Number(process.env.IMAGE_TTL_MS ?? 10 * 60 * 1000);
+const FETCH_TIMEOUT_MS: number = Number(process.env.IMAGE_FETCH_TIMEOUT_MS ?? 5_000);
 
 const getCachedAt = async (): Promise<number | undefined> => {
   try {

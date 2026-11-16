@@ -17,11 +17,8 @@ spec:
         - name: todo-backend
           image: henronen/todo-backend:1.1
           imagePullPolicy: IfNotPresent
-          env:
-            - name: PORT
-              value: "3000"
-            - name: TODO_APP_URL
-              value: "/"
-
+          envFrom:
+            - configMapRef:
+                name: todo-backend-config
           ports:
             - containerPort: 3000
