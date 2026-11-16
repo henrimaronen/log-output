@@ -77,3 +77,9 @@ Pod container:8888 (log-output)
 - `kubectl get pvc shared-claim`
 - `docker build -t henronen/ping-pong:1.1 .`
 - `docker push henronen/ping-pong:1.1`
+
+## 2.3
+
+Create a new namespace
+
+- `kubectl create ns exercises`
